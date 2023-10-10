@@ -1,12 +1,14 @@
 package com.wildcodeschool.wildandwizard.repository;
 
 import com.wildcodeschool.wildandwizard.entity.Wizard;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Repository
 public class WizardRepository implements WizardDao {
 
     private static List<Wizard> wizards = new ArrayList<>(
@@ -16,11 +18,10 @@ public class WizardRepository implements WizardDao {
     );
 
     @Override
-    public Wizard save(Wizard wizard) {
+    public void save(Wizard wizard) {
 
         wizard.setId((long) (wizards.size() + 1));
         wizards.add(wizard);
-        return wizard;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class WizardRepository implements WizardDao {
     }
 
     @Override
-    public Wizard update(Wizard wizard) {
+    public void update(Wizard wizard) {
 
         for (Wizard update : wizards) {
             if (update.getId().equals(wizard.getId())) {
@@ -52,10 +53,9 @@ public class WizardRepository implements WizardDao {
                 update.setBiography(wizard.getBiography());
                 update.setMuggle(wizard.isMuggle());
 
-                return update;
+                return;
             }
         }
-        return null;
     }
 
     @Override

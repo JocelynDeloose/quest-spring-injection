@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface WizardDao {
 
-    Wizard save(Wizard entity);
+    void save(Wizard entity);
 
     Wizard findById(Long id);
 
     List<Wizard> findAll();
 
-    Wizard update(Wizard entity);
+    void update(Wizard entity);
 
     void deleteById(Long id);
 }
